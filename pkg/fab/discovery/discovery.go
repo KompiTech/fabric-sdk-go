@@ -44,6 +44,11 @@ func New(ctx fabcontext.Client) (*Client, error) {
 	}, nil
 }
 
+// NewChannelPeersDiscoveryRequest returns new request form channel peers
+func NewChannelPeersDiscoveryRequest(channelName string) *discclient.Request {
+	return discclient.NewRequest().AddLocalPeersQuery().OfChannel(channelName).AddPeersQuery()
+}
+
 // Response extends the response from the Discovery invocation on the peer
 // by adding the endpoint URL of the peer that was invoked.
 type Response interface {
